@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>LocalTest</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LocalTest.Domain.Shared\LocalTest.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.Trees.Domain" Version="2.8.0" />
+    <PackageReference Include="EasyAbp.PrivateMessaging.Domain" Version="1.5.0" />
+    <PackageReference Include="Volo.Abp.BlobStoring.Database.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.Emailing" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.Identity.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" Version="6.0.2" />
+  </ItemGroup>
+
+</Project>

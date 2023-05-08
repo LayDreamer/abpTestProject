@@ -1,0 +1,57 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Permissions
+@model LocalTest.Web.Pages.FactoryList.Index
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@inject IStringLocalizer<LocalTestResource> L
+@inject IAuthorizationService AuthorizationService
+@section scripts{
+    <abp-script src="/Pages/Files/index.js" />
+    <abp-script src="/Pages/FactoryList/Index.js" />
+    <abp-script src="/Pages/Input.js" />
+}
+    <abp-row>
+        <abp-card>
+            <abp-card-header>
+                <abp-row>
+                    <abp-column size-md="_6">
+                        <abp-card-title>@L["MaterialRequisition"]</abp-card-title>
+                    </abp-column>
+                    <abp-column class="text-end">
+                        @*<div style="display:inline-block;position:relative;">
+                    <div style="position:absolute;right:2px;top:2px;cursor:pointer;display:none;" class="input_clear">
+                    <button style="border:none;background:none;" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <input type="text" placeholder="@L["Name"]" class="input-text w200 form-control"
+                    aria-describedby="basic-addon1" id="SearchKey" style="height:30px;">
+
+                    </div>
+                    <abp-button id="SearchButton" style="margin-right:20px;height:30px"
+                    text="@L["Search"].Value"
+                    icon="search"
+                    button-type="Primary" />*@
+
+                        @if (await AuthorizationService.IsGrantedAsync(LocalTestPermissions.FactoryMaterialRequisition.Create))
+                    {
+                        <abp-button id="CreateButton"
+                                text="@L["NewInventory"].Value"
+                                icon="plus"
+                                button-type="Primary" />
+                    }
+                    <abp-button id="DownloadButton"
+                                text="@L["Download"].Value"
+                                icon="download"
+                                button-type="Primary" />
+                </abp-column>
+            </abp-row>
+        </abp-card-header>
+        <abp-card-body>
+            <abp-row style="min-height:300px">
+                <p id="listNumber" hidden="hidden" />
+                <abp-table striped-rows="true" id="RequisitionListTable"></abp-table>
+            </abp-row>
+        </abp-card-body>
+    </abp-card>
+</abp-row>

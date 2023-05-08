@@ -1,0 +1,53 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Permissions
+@using LocalTest.Web.Pages.Projects
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.Extensions.Localization
+@model IndexModel
+@inject IStringLocalizer<LocalTestResource> L
+@inject IAuthorizationService AuthorizationService
+@section scripts
+    {
+    <abp-script src="/Pages/Projects/Index.js" />
+    <abp-script src="/Pages/Input.js" />
+}
+    <head>
+        @* <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />*@
+    </head>
+    <body>
+        <abp-card>
+            <abp-card-header>
+                <abp-row>
+                    <abp-column size-md="_6">
+                        <abp-card-title>@L["Projects"]</abp-card-title>
+                    </abp-column>
+                    <abp-column size-md="_6" class="text-end">
+                        <div style="display:inline-block;position:relative;">
+                            <div style="position:absolute;right:2px;top:2px;cursor:pointer;display:none;" class="input_clear">
+                                <button style="border:none;background:none;" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <input type="text" placeholder="@L["NameCode"]" class="input-text w200 form-control"
+                               aria-describedby="basic-addon1" id="SearchKey" style="height:30px;">
+
+                        </div>
+                        <abp-button id="SearchButton" style="margin-right:20px;height:30px"
+                                text="@L["Search"].Value"
+                                icon="search"
+                                button-type="Primary" />
+                        @if (await AuthorizationService.IsGrantedAsync(LocalTestPermissions.Projects.Create))
+                    {
+                        <abp-button id="NewProjectButton" style="height:30px"
+                                text="@L["NewProject"].Value"
+                                icon="plus"
+                                button-type="Primary" />
+                    }
+
+                </abp-column>
+            </abp-row>
+        </abp-card-header>
+        <abp-card-body>
+            <abp-table striped-rows="true" id="ProjectsTable"></abp-table>
+        </abp-card-body>
+    </abp-card>
+</body>

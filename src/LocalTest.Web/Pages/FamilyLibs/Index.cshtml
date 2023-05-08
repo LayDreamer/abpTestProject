@@ -1,0 +1,104 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Web.Pages.FamilyLibs
+@using Microsoft.Extensions.Localization
+@model IndexModel
+@inject IStringLocalizer<LocalTestResource> L
+@section scripts
+    {
+    <abp-script src="/Pages/FamilyLibs/Index.js" />
+    <abp-script src="/Pages/FamilyLibs/JSTree.js" />
+    <abp-script src="/Pages/FamilyLibs/TreeGrid.js" />
+    <abp-script src="/Pages/Input.js" />
+}
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-treegrid/0.2.0/css/jquery.treegrid.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.15/themes/default/style.min.css" />
+    </head>
+    <body>
+        <abp-row>
+            <abp-card>
+                <abp-card-header>
+                    <abp-row>
+                        <abp-column size="_3">
+                            <abp-card-title>@L["Product"]</abp-card-title>
+                        </abp-column>
+                        <abp-column class="text-start">
+                            <div style="display:inline-block;position:relative;">
+                                <div style="position:absolute;right:2px;top:2px;cursor:pointer;display:none;" class="input_clear">
+                                    <button style="border:none;background:none;" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    @* <abp-button class="close" data-dismiss="modal" aria-hidden="true" text="×" />*@
+                                </div>
+                                <input type="text" placeholder="名称" class="input-text w100 form-control"
+                                   aria-describedby="basic-addon1" id="SearchName" style="width:150px;height:30px;">
+
+                            </div>
+                             <div style="display:inline-block;position:relative;">
+                                <div style="position:absolute;right:2px;top:2px;cursor:pointer;display:none;" class="input_clear">
+                                    <button style="border:none;background:none;" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                               <input type="text" placeholder="编码" class="input-text w200 form-control"
+                               aria-describedby="basic-addon1" id="SearchCode" style="width:150px; height:30px;">
+                            </div>
+                           
+                            <abp-button id="SearchButton" style="margin-left:20px;"
+                                    text="@L["Search"].Value"
+                                    icon="search"
+                                    button-type="Primary" />@*style="margin-left:50px;height:40px"*@
+
+                            <abp-button id="DownloadButton" style="margin-left:20px;"
+                                    text="@L["Download"].Value"
+                                    icon="download"
+                                    button-type="Primary" />
+                        </abp-column>
+
+                    </abp-row>
+                </abp-card-header>
+                <abp-card-body>
+                    <abp-row>
+                        <abp-column size="_3">
+                            @*border-right: 1px dotted gray*@
+                            <p id="idtest" hidden="hidden" />
+                            <div id="jstree_demo_div"></div>
+                        </abp-column>
+                        <abp-column size="_9" style="border-left:1px solid;">
+                            <abp-table striped-rows="true" id="FamiliesTable"></abp-table>
+                        </abp-column>
+                    </abp-row>
+                </abp-card-body>
+            </abp-card>
+        </abp-row>
+        <abp-row>
+            <abp-card id="moduleCard" hidden="hidden">
+                <abp-card-header>
+                    <abp-row>
+                        <abp-column size-md="_6">
+                            <abp-card-title id="moduleTitle">@L["Detail"]</abp-card-title>
+                        </abp-column>
+                    </abp-row>
+                </abp-card-header>
+                <abp-card-body>
+                    <abp-row>
+                        <abp-column size="_7" style="overflow-y:auto;max-height: 400px;">
+                            <table id="treegridtable" data-mobile-responsive="true" class="mb-bootstrap-table text-nowrap"></table>
+                        </abp-column>
+                        <abp-column size="_5">
+                            <abp-tabs name="TabId" tab-style="Pill">
+                                <abp-tab name="nav-home" active="true" title="@L["ProductImage"].Value">
+                                    <img id="productImg" />
+                                </abp-tab>
+                                @* <abp-tab name="nav-contact" title="@L["Product3D"].Value">
+                            功能待开放...
+                            </abp-tab>*@
+                            </abp-tabs>
+                            @*<img src="https://gyhyjysvn.chinayasha.com/svn/Public/appupdate/BDSautocad/SVNImageCache/ProjectReview/2022-07-06-16-21-22.jpg" />*@
+                        </abp-column>
+                    </abp-row>
+                </abp-card-body>
+            </abp-card>
+        </abp-row>
+    </body>
+
+
+

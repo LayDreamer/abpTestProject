@@ -1,0 +1,27 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Web.Pages.FactoryList
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model CreateModalModel
+@inject IStringLocalizer<LocalTestResource> L
+@{
+    Layout = null;
+}
+<abp-dynamic-form abp-model="UploadDto" asp-page="/FactoryList/CreateModal">
+    <abp-modal>
+        <abp-modal-header title="@L["NewInventory"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <label for="fileName">拆单表</label><span> * </span>
+            <abp-input asp-for="SplitListFileDto.File"></abp-input>
+            @*<input type='checkbox' checked="checked" /><label for="fileName">车间五金</label>
+            <input style="margin-left:30px" type='checkbox' checked="checked" /><label for="fileName">发货五金</label>*@
+            <hr />
+            <label for="fileName">膜物料编码管理表</label><span> * </span>
+            <abp-input asp-for="FilmFloorCodeFileDto.File"></abp-input>
+            <hr />
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>

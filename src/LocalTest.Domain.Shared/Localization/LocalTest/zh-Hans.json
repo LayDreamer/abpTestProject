@@ -1,0 +1,99 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "Menu:Home": "首页",
+    "Welcome": "欢迎",
+    "LongWelcomeMessage": "欢迎来到该应用程序. 这是一个基于ABP框架的启动项目. 有关更多信息, 请访问 abp.io.",
+    "ShortWelcomeMessage": "欢迎使用亚厦工业化数据管理系统！",
+    "ClosePage": "关闭",
+    "Submit": "提交",
+    "Successfully": "操作完成",
+    "CreatorId": "用户Id",
+
+    "Menu:FamilyList": "族库列表",
+    "Menu:Families": "工业化族库",
+    "Menu:FamilyLibs": "工业化族库",
+    "Families": "工业化族库",
+    "FamilyLibs": "工业化族库",
+    "NewFamily": "新增族",
+    "Update": "更新",
+    "Upload": "上传",
+    "Download": "下载",
+    "Detail": "详情",
+    "ProductImage": "产品图片",
+    "Product3D": "三维模型",
+
+
+    "Category": "分类层级",
+    "Product": "产品",
+    "Module": "模块/物料",
+    "File": "文件",
+    "ProductName": "产品名称",
+    "ProcductName": "产品名称",
+    "DisplayName": "产品名称",
+    "FileName": "文件名称",
+    "CreationTime": "创建时间",
+    "LastModificationTime": "最近修改时间",
+
+    "Menu:Projects": "项目列表",
+    "Menu:Project": "项目",
+    "Projects": "项目列表",
+    "NewProject": "新建项目",
+    "Status": "状态",
+    "Name": "名称",
+    "Code": "编码",
+    "Creator": "创建者",
+    "NameCode": "项目名称/编码",
+
+
+    "Menu:MaterialSpecificationList": "物料规格清单",
+    "Menu:MaterialSpecificationSet": "列表",
+    "Menu:MaterialSpecificationDetail": "详情",
+    "MaterialSpecificationList": "物料规格清单",
+    "MaterialSpecificationDetail": "物料规格清单(详情)",
+    "MaterialNumber": "备料编号",
+    "ProjectName": "项目名称",
+    "ProjectCode": "项目编码",
+    "NewInventory": "新增清单",
+
+    "DrawingLength": "图纸长（mm）",
+    "DrawingWidth": "图纸宽（mm）",
+    "DrawingThickness": "图纸厚（mm）",
+    "ProductPlatform": "产品平台",
+    "ProductSystem": "产品系统",
+    "ComponentPosition": "部品位置",
+    "MaterialName": "物料名称",
+    "MaterialCount": "物料数量",
+    "MaterialUnit": "物料使用单位",
+
+    "Version": "版本",
+
+    "DemandType": "项目类型",
+
+    "Menu:FactoryList": "工厂拆单列表",
+    "Menu:MaterialRequisition": "领料单",
+    "Menu:RequisitionList": "领料单",
+    "MaterialRequisition": "领料单",
+
+
+    "Permission:LocalTest": "数据管理程序",
+    "Permission:FamilyLibs": "族库管理",
+    "Permission:FamilyLibs.Delete": "删除族",
+
+    "Permission:Projects": "项目管理",
+    "Permission:Projects.Create": "创建项目",
+    "Permission:Projects.Edit": "编辑项目",
+    "Permission:Projects.Delete": "删除项目",
+
+    "Permission:MaterialSpecificationList": "物料规格清单管理",
+    "Permission:MaterialSpecificationList.Create": "创建物料规格清单",
+    "Permission:MaterialSpecificationList.Delete": "删除物料规格清单",
+
+    "Permission:FactoryMaterialRequisition": "工厂领料单管理",
+    "Permission:FactoryMaterialRequisition.Create": "创建领料单",
+    "Permission:FactoryMaterialRequisition.Delete": "删除领料单",
+
+    "Enum:TotalDemandType.Template": "样板",
+    "Enum:TotalDemandType.Output": "量产"
+  }
+}

@@ -1,0 +1,69 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Permissions
+@using LocalTest.Web.Pages.MaterialSpecificationList
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.Extensions.Localization
+@model IndexModel
+@inject IStringLocalizer<LocalTestResource> L
+@inject IAuthorizationService AuthorizationService
+@section scripts
+    {
+    <abp-script src="/Pages/MaterialSpecificationDetail/Index.js" />
+    <abp-script src="/Pages/MaterialSpecificationList/Index.js" />
+}
+    <body>
+        <abp-row>
+            <abp-card>
+                <abp-card-header>
+                    <abp-row>
+                        <abp-column size-md="_6">
+                            <abp-card-title>@L["MaterialSpecificationList"]</abp-card-title>
+                        </abp-column>
+                        <abp-column class="text-end">
+                            @if (await AuthorizationService.IsGrantedAsync(LocalTestPermissions.MaterialSpecificationList.Create))
+                        {
+                            <abp-button id="CreateButton"
+                                    text="@L["NewInventory"].Value"
+                                    icon="plus"
+                                    button-type="Primary" />
+                        }
+                        <abp-button id="DownloadButton"
+                                    text="@L["Download"].Value"
+                                    icon="download"
+                                    button-type="Primary" />
+                    </abp-column>
+                </abp-row>
+            </abp-card-header>
+            <abp-card-body>
+                <abp-row>
+                    <p id="listNumber" hidden="hidden" />
+                    <abp-table striped-rows="true" id="SpecificationTable"></abp-table>
+                </abp-row>
+            </abp-card-body>
+        </abp-card>
+    </abp-row>
+
+    <abp-row>
+        <abp-card id="moduleCard" hidden="hidden">
+            <abp-card-header>
+                <abp-row>
+                    <abp-column size-md="_6">
+                        <abp-card-title id="moduleTitle">@L["Detail"]</abp-card-title>
+                    </abp-column>
+                    <abp-column class="text-end">
+                        <abp-button id="CloseButton"
+                                    text="@L["ClosePage"].Value"
+                                    icon="close"
+                                    button-type="Primary" />
+                    </abp-column>
+                </abp-row>
+            </abp-card-header>
+            <abp-card-body>
+                <abp-row>
+                    <abp-table striped-rows="true" id="SpecificationDetailTable"></abp-table>
+                </abp-row>
+            </abp-card-body>
+        </abp-card>
+    </abp-row>
+</body>

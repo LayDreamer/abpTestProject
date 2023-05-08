@@ -1,0 +1,28 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Web.Pages.Families
+@using Microsoft.Extensions.Localization
+@model IndexModel
+@inject IStringLocalizer<LocalTestResource> L
+@section scripts
+    {
+    <abp-script src="/Pages/Families/Index.js" />
+}
+    <abp-card>
+        <abp-card-header>
+            <abp-row>
+                <abp-column size-md="_6">
+                    <abp-card-title>@L["Families"]</abp-card-title>
+                </abp-column>
+                <abp-column size-md="_6" class="text-end">
+                    <abp-button id="NewFamilyButton"
+                            text="@L["NewFamily"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+                </abp-column>
+            </abp-row>
+        </abp-card-header>
+        <abp-card-body>
+            <abp-table striped-rows="true" id="FamiliesTable"></abp-table>
+        </abp-card-body>
+    </abp-card>

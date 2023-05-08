@@ -1,0 +1,37 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Web.Pages.Families
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model DownloadModalModel
+@inject IStringLocalizer<LocalTestResource> L
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming;
+@inject ITheme CurrentTheme
+@{
+    Layout = CurrentTheme.GetEmptyLayout();
+}
+@section scripts
+    {
+    <abp-script src="/Pages/Files/Index.js" />
+}
+    <abp-modal>
+        <abp-modal-header title="@L["Download"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-column>
+                <form id="DownloadFile">
+                    <label>@L["ProductName"]</label>
+                    <input asp-for="Family.ProcductName" disabled="true" class="form-control">
+                    <br /><br />
+                    <label>@L["FileName"]</label>
+                    <input asp-for="Family.FileName" disabled="true" id="fileName" class="form-control">
+                    <hr />
+                    <input type="submit" class="btn btn-info" />
+                </form>
+                @* <form id="DownloadFile">
+            <label for="fileName">Filename</label><span> * </span>
+            <input type="text" id="fileName" name="fileName" class="form-control">
+            <input type="submit" class="btn btn-info" />
+            </form>*@
+            </abp-column>
+        </abp-modal-body>
+    </abp-modal>

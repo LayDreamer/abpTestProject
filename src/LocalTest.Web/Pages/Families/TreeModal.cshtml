@@ -1,0 +1,34 @@
+﻿@page
+@using LocalTest.Localization
+@using LocalTest.Web.Pages.Families
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model TreeModalModel
+@inject IStringLocalizer<LocalTestResource> L
+@section scripts
+    {
+    <abp-script src="/Pages/Families/TreeModal.js" />
+}
+    <abp-card size-md="_6">
+        <abp-card-body>
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>DisplayName</th>
+                    <th></th>
+                </tr>
+                @foreach (var treeDto in Model.pagedResult.Items)
+            {
+                <tr>
+                    <td>@treeDto.Id</td>
+                    <td>@treeDto.DisplayName</td>
+                    <td>
+                        <a class="btn btn-primary" asp-page="/Families/UploadModal" asp-route-id="@treeDto.Id">Update</a>
+                        <a class="btn btn-danger" href="/familyTree/delete?id=@treeDto.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </abp-card-body>
+</abp-card>
+

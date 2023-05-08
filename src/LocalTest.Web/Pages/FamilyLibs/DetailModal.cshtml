@@ -1,0 +1,63 @@
+﻿@page
+@using LocalTest.Localization
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model LocalTest.Web.Pages.FamilyLibs.DetailModalModel
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming;
+@inject IStringLocalizer<LocalTestResource> L
+@{
+    Layout = null;
+}
+@section scripts
+    {
+    <abp-script src="/Pages/Files/Index.js" />
+}
+    <abp-modal>
+        <abp-modal-header>
+            <script src="https://cdn.bootcdn.net/ajax/libs/jquery-treetable/3.2.0/jquery.treetable.js"></script>
+            <link href="https://cdn.bootcdn.net/ajax/libs/jquery-treetable/3.2.0/css/jquery.treetable.css" rel="stylesheet">
+            <link href="https://cdn.bootcdn.net/ajax/libs/jquery-treetable/3.2.0/css/jquery.treetable.theme.default.css" rel="stylesheet">
+            <abp-row>
+                <abp-column size-md="_6">
+                    <abp-card-title id="moduleTitle"></abp-card-title>
+                </abp-column>
+            </abp-row>
+        </abp-modal-header>
+        <abp-modal-body>
+            <abp-column style="overflow-x:auto;overflow-y:auto;max-height: 400px; max-width:450px;">
+                <abp-input asp-for="Id" />
+                <table id="treeTable">
+                </table>
+            </abp-column>
+            <img height="200" width="400" src="https://gyhyjysvn.chinayasha.com/svn/Public/appupdate/BDSautocad/SVNImageCache/ProjectReview/2022-07-06-16-21-22.jpg" />
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $.ajax({
+                        "type": 'GET',
+                        "url": '/FamilyLibs/Index?handler=TestModuleList',
+                        "dataType": "json",
+                        "success": function(data) {
+                            $("#treeTable")
+                                .append("<thead><tr><th>" + "名称" + "</th><th>" + "地址" + "</th></tr></thead>");
+                            $.each(data, function(idx, obj) {
+                                $("#treeTable")
+                                    .append(
+                                        "<tbody><tr data-tt-id=\"" + obj.nodeId + "\" data-tt-parent-id=\"" + obj.pid + "\"><td>"
+                                        + obj.text + "</td><td>" + obj.href + "</td></tr></tbody>");
+                            });
+                            $("#treeTable").treetable({
+                                //initialState: "expanded",
+                                expandable: true,
+                                clickableNodeNames: true,//点击节点名称也打开子节点.
+                                //indent: 30,//每个分支缩进的像素数。
+                            });
+                        }
+                    });
+
+                });
+            </script>
+
+
+        </abp-modal-body>
+    </abp-modal>
